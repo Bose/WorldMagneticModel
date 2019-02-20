@@ -32,6 +32,8 @@
 #import "WMM/EGM9615.h"
 #import "WMM/GeomagnetismHeader.h"
 
+NSErrorDomain const WMMErrorDomain = @"WMMErrorDomain";
+
 @interface WMMModel ()
 {
     MAGtype_MagneticModel *magneticModels[1];
@@ -45,7 +47,7 @@
 
 @implementation WMMModel
 
-- (nullable instancetype)init
+- (nullable instancetype)initWithError:(NSError **)error
 {
     if (self = [super init])
     {
@@ -53,6 +55,10 @@
         if (!MAG_robustReadMagModels((char *)[path cStringUsingEncoding:NSUTF8StringEncoding], &magneticModels, 1))
         {
             NSLog(@"WMM.COF not found");
+            if (error)
+            {
+                *error = [[NSError alloc] initWithDomain:WMMErrorDomain code:WMMErrorCoefficientsNotFound userInfo:nil];
+            }
             return nil;
         }
 
@@ -63,6 +69,10 @@
         if (magneticModels[0] == nil || timedMagneticModel == nil)
         {
             NSLog(@"Error reading models");
+            if (error)
+            {
+                *error = [[NSError alloc] initWithDomain:WMMErrorDomain code:WMMErrorCannotReadModels userInfo:nil];
+            }
             return nil;
         }
 

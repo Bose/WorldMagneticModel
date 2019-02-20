@@ -28,7 +28,14 @@ import WorldMagneticModel
 import XCTest
 
 class WorldMagneticModelTests: XCTestCase {
-    private let model = WMMModel()
+    private let model: WMMModel = {
+        do {
+            return try WMMModel()
+        }
+        catch {
+            fatalError("Error loading mode: \(error)")
+        }
+    }()
 
     private func date(_ year: Int, _ month: Int, _ day: Int) -> Date {
         var dc = DateComponents()
@@ -121,25 +128,25 @@ class WorldMagneticModelTests: XCTestCase {
         for tc in data {
             let location = self.location(tc.latitude, tc.longitude, tc.altitude)
             let date = WMMDate(decimalYear: tc.date)
-            let result = model?.elements(for: location, wmmDate: date)
+            let result = model.elements(for: location, wmmDate: date)
 
             print("Testing at \(tc.latitude), \(tc.longitude)")
 
             let acc = 0.05
-            XCTAssertEqual(result!.x, tc.x, accuracy: acc)
-            XCTAssertEqual(result!.y, tc.y, accuracy: acc)
-            XCTAssertEqual(result!.z, tc.z, accuracy: acc)
-            XCTAssertEqual(result!.h, tc.h, accuracy: acc)
-            XCTAssertEqual(result!.f, tc.f, accuracy: acc)
-            XCTAssertEqual(result!.incl, tc.incl, accuracy: acc)
-            XCTAssertEqual(result!.decl, tc.decl, accuracy: acc)
-            XCTAssertEqual(result!.xDot, tc.xDot, accuracy: acc)
-            XCTAssertEqual(result!.yDot, tc.yDot, accuracy: acc)
-            XCTAssertEqual(result!.zDot, tc.zDot, accuracy: acc)
-            XCTAssertEqual(result!.hDot, tc.hDot, accuracy: acc)
-            XCTAssertEqual(result!.fDot, tc.fDot, accuracy: acc)
-            XCTAssertEqual(result!.inclDot, tc.inclDot, accuracy: acc)
-            XCTAssertEqual(result!.declDot, tc.declDot, accuracy: acc)
+            XCTAssertEqual(result.x, tc.x, accuracy: acc)
+            XCTAssertEqual(result.y, tc.y, accuracy: acc)
+            XCTAssertEqual(result.z, tc.z, accuracy: acc)
+            XCTAssertEqual(result.h, tc.h, accuracy: acc)
+            XCTAssertEqual(result.f, tc.f, accuracy: acc)
+            XCTAssertEqual(result.incl, tc.incl, accuracy: acc)
+            XCTAssertEqual(result.decl, tc.decl, accuracy: acc)
+            XCTAssertEqual(result.xDot, tc.xDot, accuracy: acc)
+            XCTAssertEqual(result.yDot, tc.yDot, accuracy: acc)
+            XCTAssertEqual(result.zDot, tc.zDot, accuracy: acc)
+            XCTAssertEqual(result.hDot, tc.hDot, accuracy: acc)
+            XCTAssertEqual(result.fDot, tc.fDot, accuracy: acc)
+            XCTAssertEqual(result.inclDot, tc.inclDot, accuracy: acc)
+            XCTAssertEqual(result.declDot, tc.declDot, accuracy: acc)
         }
     }
 
@@ -228,7 +235,7 @@ class WorldMagneticModelTests: XCTestCase {
             let altitude = tc.height * 1000 // test case altitude is in kilometers, CLLocation is in meters
             let location = self.location(tc.lat, tc.lon, altitude)
             let date = WMMDate(decimalYear: tc.date)
-            model?.compute(for: location, altitudeMode: .aboveWGS84Ellipsoid, wmmDate: date, result: &result, uncertainty: nil)
+            model.compute(for: location, altitudeMode: .aboveWGS84Ellipsoid, wmmDate: date, result: &result, uncertainty: nil)
 
             let acc = 0.05
             XCTAssertEqual(result!.x, tc.x, accuracy: acc)

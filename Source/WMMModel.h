@@ -31,9 +31,33 @@
 @class WMMDate;
 @class WMMElements;
 
+/**
+ World Magnetic Model error domain.
+ */
+extern NSErrorDomain const WMMErrorDomain;
+
+/**
+ World Magnetic Model error.
+ */
+typedef NS_ERROR_ENUM(WMMErrorDomain, WMMError) {
+    
+    /** Indicates that the WMM.COF coefficients file could not be found. */
+    WMMErrorCoefficientsNotFound,
+
+    /** Indicates that an error occurred when reading the models from file. */
+    WMMErrorCannotReadModels
+};
+
 @interface WMMModel : NSObject
 
-- (nullable instancetype)init;
+/**
+ Creates a new instance of the World Magnetic Model. Returns `nil` if an error
+ occurs while loading the model files.
+
+ @param error Error pointer that is set if an error occurs.
+ @return A new instance of the World Magnetic Model, or `nil` if an error occurs.
+ */
+- (nullable instancetype)initWithError:(NSError **)error NS_SWIFT_NAME(init());
 
 /**
  Computes the magnetic field for the specified location at the specified date.
@@ -77,7 +101,7 @@
 
  @param location Compute the magnetic field for this location.
  @param date Compute the magnetic field for this date.
- @return: The magnetic field elements for the specified location on the specified date.
+ @return The magnetic field elements for the specified location on the specified date.
  */
 - (nonnull WMMElements *)elementsForLocation:(nonnull CLLocation *)location
                                         date:(nonnull NSDate *)date;
@@ -90,7 +114,7 @@
 
  @param location Compute the magnetic field for this location.
  @param date Compute the magnetic field for this date.
- @return: The magnetic field elements for the specified location on the specified date.
+ @return The magnetic field elements for the specified location on the specified date.
  */
 - (nonnull WMMElements *)elementsForLocation:(nonnull CLLocation *)location
                                      wmmDate:(nonnull WMMDate *)date;
@@ -102,7 +126,7 @@
  computation.
 
  @param location Compute the magnetic field for this location at the current date.
- @return: The magnetic field elements for the specified location at the current date.
+ @return The magnetic field elements for the specified location at the current date.
  */
 - (nonnull WMMElements *)elementsForLocation:(nonnull CLLocation *)location;
 
