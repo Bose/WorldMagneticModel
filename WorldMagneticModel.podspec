@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WorldMagneticModel"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "An iOS native wrapper around the World Magnetic Model"
 
   s.description  = <<-DESC
