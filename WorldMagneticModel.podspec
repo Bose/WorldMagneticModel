@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WorldMagneticModel"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "An iOS native wrapper around the World Magnetic Model"
 
   s.description  = <<-DESC
@@ -24,3 +24,4 @@ Further information about the World Magnetic Model is available at https://www.n
   s.resource  = "Source/WMM/WMM.COF"
 
 end
+
