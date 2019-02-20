@@ -15,8 +15,7 @@ The WMM source and coefficients distribution, as downloaded from the WMM website
 This framework can be installed via [CocoaPods](https://cocoapods.org). Add the following to your `Podfile`:
 
 ```ruby
-source 'https://github.com/BoseWCTC/Specs.git'
-pod 'WorldMagneticModel', '~> 1.0'
+pod 'WorldMagneticModel', '~> 1'
 ```
 
 ## Usage
