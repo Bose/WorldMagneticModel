@@ -24,9 +24,8 @@ pod 'WorldMagneticModel', '~> 1'
 import CoreLocation
 import WorldMagneticModel
 
-// Step 1: Create the model. If there is an error loading the coefficients from
-// their resource file, the initializer will return nil.
-let model = WMMModel()
+// Step 1: Create the model.
+let model = try? WMMModel()
 
 // Step 2: Get the current location of the device. This is left as an exercise
 // for the reader.
