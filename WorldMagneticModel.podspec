@@ -20,6 +20,7 @@ Further information about the World Magnetic Model is available at https://www.n
   s.source_files  = "Source/**/*.{h,m,c}"
   s.public_header_files = "Source/*.h"
   s.private_header_files = "Source/*+Internal.h", "Source/WMM/*.h"
+  s.compiler_flags = "-Wno-macro-redefined -Wno-non-literal-null-conversion -Wno-format-security -Wno-shorten-64-to-32 -Wno-conditional-uninitialized"
 
   s.resource  = "Source/WMM/WMM.COF"
 
