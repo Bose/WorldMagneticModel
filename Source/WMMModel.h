@@ -34,7 +34,7 @@
 /**
  World Magnetic Model error domain.
  */
-extern NSErrorDomain const WMMErrorDomain;
+extern NSErrorDomain const _Nonnull WMMErrorDomain;
 
 /**
  World Magnetic Model error.
@@ -57,7 +57,7 @@ typedef NS_ERROR_ENUM(WMMErrorDomain, WMMError) {
  @param error Error pointer that is set if an error occurs.
  @return A new instance of the World Magnetic Model, or `nil` if an error occurs.
  */
-- (nullable instancetype)initWithError:(NSError **)error NS_SWIFT_NAME(init());
+- (nullable instancetype)initWithError:(NSError * _Nullable * _Nullable)error NS_SWIFT_NAME(init());
 
 /**
  Computes the magnetic field for the specified location at the specified date.
@@ -73,8 +73,8 @@ typedef NS_ERROR_ENUM(WMMErrorDomain, WMMError) {
 - (void)computeForLocation:(nonnull CLLocation *)location
               altitudeMode:(WMMAltitude)altitudeMode
                       date:(nonnull NSDate *)date
-                    result:(WMMElements **)result
-               uncertainty:(WMMElements **)uncertainty;
+                    result:(WMMElements * _Nullable * _Nullable)result
+               uncertainty:(WMMElements * _Nullable * _Nullable)uncertainty;
 
 /**
  Computes the magnetic field for the specified location at the specified date.
@@ -90,8 +90,8 @@ typedef NS_ERROR_ENUM(WMMErrorDomain, WMMError) {
 - (void)computeForLocation:(nonnull CLLocation *)location
               altitudeMode:(WMMAltitude)altitudeMode
                    wmmDate:(nonnull WMMDate *)date
-                    result:(WMMElements **)result
-               uncertainty:(WMMElements **)uncertainty;
+                    result:(WMMElements * _Nullable * _Nullable)result
+               uncertainty:(WMMElements * _Nullable * _Nullable)uncertainty;
 
 /**
  Computes the magnetic field for the specified location at the specified date.

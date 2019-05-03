@@ -13,13 +13,13 @@
 		C568BBCF21BE1D970070FB51 /* EGM9615.h in Headers */ = {isa = PBXBuildFile; fileRef = C568BBCB21BE1D960070FB51 /* EGM9615.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C568BBD021BE1D970070FB51 /* GeomagnetismHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C568BBCC21BE1D960070FB51 /* GeomagnetismHeader.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C568BBD121BE1D970070FB51 /* WMM.COF in Resources */ = {isa = PBXBuildFile; fileRef = C568BBCD21BE1D960070FB51 /* WMM.COF */; };
-		C568BBD221BE1D970070FB51 /* GeomagnetismLibrary.c in Sources */ = {isa = PBXBuildFile; fileRef = C568BBCE21BE1D970070FB51 /* GeomagnetismLibrary.c */; };
+		C568BBD221BE1D970070FB51 /* GeomagnetismLibrary.c in Sources */ = {isa = PBXBuildFile; fileRef = C568BBCE21BE1D970070FB51 /* GeomagnetismLibrary.c */; settings = {COMPILER_FLAGS = "-Wno-non-literal-null-conversion -Wno-format-security -Wno-shorten-64-to-32 -Wno-conditional-uninitialized"; }; };
 		C568BBD821BE1F590070FB51 /* WMMModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C568BBD621BE1F590070FB51 /* WMMModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C568BBD921BE1F590070FB51 /* WMMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C568BBD721BE1F590070FB51 /* WMMModel.m */; };
+		C568BBD921BE1F590070FB51 /* WMMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C568BBD721BE1F590070FB51 /* WMMModel.m */; settings = {COMPILER_FLAGS = "-Wno-macro-redefined"; }; };
 		C568BBDC21BE1FED0070FB51 /* WMMDate.h in Headers */ = {isa = PBXBuildFile; fileRef = C568BBDA21BE1FED0070FB51 /* WMMDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C568BBDD21BE1FED0070FB51 /* WMMDate.m in Sources */ = {isa = PBXBuildFile; fileRef = C568BBDB21BE1FED0070FB51 /* WMMDate.m */; };
+		C568BBDD21BE1FED0070FB51 /* WMMDate.m in Sources */ = {isa = PBXBuildFile; fileRef = C568BBDB21BE1FED0070FB51 /* WMMDate.m */; settings = {COMPILER_FLAGS = "-Wno-macro-redefined"; }; };
 		C568BBE121BE22AB0070FB51 /* WMMElements.h in Headers */ = {isa = PBXBuildFile; fileRef = C568BBDF21BE22AB0070FB51 /* WMMElements.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C568BBE221BE22AB0070FB51 /* WMMElements.m in Sources */ = {isa = PBXBuildFile; fileRef = C568BBE021BE22AB0070FB51 /* WMMElements.m */; };
+		C568BBE221BE22AB0070FB51 /* WMMElements.m in Sources */ = {isa = PBXBuildFile; fileRef = C568BBE021BE22AB0070FB51 /* WMMElements.m */; settings = {COMPILER_FLAGS = "-Wno-macro-redefined"; }; };
 		C568BBE321BE22E70070FB51 /* WMMDate+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C568BBDE21BE21720070FB51 /* WMMDate+Internal.h */; };
 		C568BBE521BE265A0070FB51 /* WMMElements+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C568BBE421BE24500070FB51 /* WMMElements+Internal.h */; };
 		C5A14B3F21BE31A000E1030E /* WMMAltitude.h in Headers */ = {isa = PBXBuildFile; fileRef = C5A14B3E21BE2F4400E1030E /* WMMAltitude.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -207,6 +207,7 @@
 					};
 					C568BBB921BE1D7B0070FB51 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -216,6 +217,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C568BBA721BE1D7B0070FB51;
 			productRefGroup = C568BBB221BE1D7B0070FB51 /* Products */;
@@ -467,7 +469,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bose.WorldMagneticModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -485,7 +487,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bose.WorldMagneticModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
